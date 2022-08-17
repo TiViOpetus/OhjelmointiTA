@@ -19,7 +19,27 @@ def centuryCode(ssnumber):
     century = codeDict[cCode]
     return century
 
+def dateOfBirth(ssnumber):
+    """Extracts the date of birth from a social security number
+
+    Args:
+        ssnumber (string): finnish social security number
+
+    Returns:
+        string: the date of birth
+    """
+    dayPart = ssnumber[0:2]
+    monthPart = ssnumber[2:4]
+    yearPart = ssnumber[4:6]
+    birth = dayPart + '.' + monthPart + '.' + yearPart
+    return birth
+
+
+
+
+
 if __name__ == "__main__":
     ssnumber = '130728A478N'
     print('syntymävuosisata on', centuryCode(ssnumber))
+    print('Syntymäpäivä on', dateOfBirth(ssnumber))
     

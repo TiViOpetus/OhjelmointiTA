@@ -3,6 +3,9 @@
 
 # KIRJASTOJEN JA MODULIEN LATAUS
 
+# Module for checking finnish social security numbers
+import finssn 
+
 # LUOKKAMÄÄRITYKSET
 
 class Person:
@@ -14,18 +17,23 @@ class Person:
         self.ssNumber = ssNumber
 
 # MAIN LOOP
+while True:
+    stopLoop = ''
+    # Ask for user input and store answers to variables
+    givenName = input('Mikä on etunimesi? ')
+    surname= input('Mikä on sukunimesi? ')
+    ssn = input('Syötä henkilötunnuksesi: ')
+    stopLoop = input('Haluatko lopettaa, paina Q').upper()
 
-# Ask for user input and store answers to variables
-givenName = input('Mikä on etunimesi? ')
-surname= input('Mikä on sukunimesi? ')
-ssn = input('Syötä henkilötunnuksesi: ')
+    # Create an object from Person class
 
-# Create an object from Person class
+    person1 = Person(givenName, surname, ssn)
+    century = finssn.centuryCode(person1.ssNumber)
 
-person1 = Person(givenName, surname, ssn)
+    print('Etunimesi on', person1.firstName, 'olet syntynyt', century, 'luvulla')
 
-print('Etunimesi on', person1.firstName, 'ja henkilötunnuksesi', person1.ssNumber)
-
+    if stopLoop == 'Q':
+        break
     
 
 
